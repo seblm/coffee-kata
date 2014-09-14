@@ -1,8 +1,13 @@
 package fr.ds.katacoffee;
 
-/**
- * Created by dahlia on 11/09/14.
- */
+import java.math.BigDecimal;
+
 public enum DrinkType {
-    COFFEE, TEA, CHOCOLATE
+    COFFEE("0.6"), TEA("0.4"), CHOCOLATE("0.5"), ORANGE("0.6");
+
+    final BigDecimal cost;
+
+    DrinkType(String cost) {
+        this.cost = new BigDecimal(cost);
+    }
 }
