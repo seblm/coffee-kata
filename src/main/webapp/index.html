@@ -18,16 +18,14 @@
     Photo Machine
 </div>
 
-<div id="webcam"></div>
-<video id="live" autoplay></video>
+<div id="photobooth">
+	<video  autoplay></video>
+	<button id="shot">Snapshot</button>
+	<img src="">
+	<canvas style="display:none;"></canvas>
+</div>
 
-<div ng-controller="PlayerController">
-  <button ng-click="play()" class="button" ng-show="!playing">Play</button>
-  <button ng-click="stop()" class="button alert" ng-show="playing">Stop</button>
-  Playing audio: <b>{{ playing }}</b>
-</div>    
-    
-
-
+<div id="webcam">
+</div>
 </body>
 </html>
