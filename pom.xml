@@ -16,6 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
+        <maven.tomcat.path>/</maven.tomcat.path>
 
         <jersey.version>2.10</jersey.version>
 	</properties>
