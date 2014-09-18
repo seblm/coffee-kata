@@ -49,13 +49,9 @@ public class Logic{
 
     }
 
-    String push(){
+    public String push(){
         return protocolMsg;
     }
-
-
-
-
 
     public String printAmountMoney() {
         return String.valueOf(amount);
