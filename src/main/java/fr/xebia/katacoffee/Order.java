@@ -1,4 +1,4 @@
-package fr.ds.katacoffee;
+package fr.xebia.katacoffee;
 
 import java.math.BigDecimal;
 

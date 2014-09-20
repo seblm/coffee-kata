@@ -13,11 +13,6 @@ public enum PhotoMaker {
 	INSTANCE;
 	
     static final Logger log = LoggerFactory.getLogger("PhotoMaker");
-    
-    //package private constructor
-    PhotoMaker(){
-    	
-    }
 
     public String make(Command command) {
         //TODO do something

@@ -1,11 +1,12 @@
-package fr.ds.katacoffee.bdd;
+package fr.xebia.katacoffee.bdd;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import fr.ds.katacoffee.DrinkType;
-import fr.ds.katacoffee.Logic;
-import fr.ds.katacoffee.Order;
+import fr.xebia.katacoffee.DrinkType;
+import fr.xebia.katacoffee.Logic;
+import fr.xebia.katacoffee.Order;
+
 import org.assertj.core.api.Assertions;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -1,4 +1,4 @@
-package fr.ds.katacoffee.bdd;
+package fr.xebia.katacoffee.bdd;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;

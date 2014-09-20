@@ -1,7 +1,12 @@
-package fr.ds.katacoffee;
+package fr.xebia.katacoffee;
 
 
 import org.junit.Test;
+
+import fr.xebia.katacoffee.DrinkMaker;
+import fr.xebia.katacoffee.DrinkType;
+import fr.xebia.katacoffee.Logic;
+import fr.xebia.katacoffee.Order;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

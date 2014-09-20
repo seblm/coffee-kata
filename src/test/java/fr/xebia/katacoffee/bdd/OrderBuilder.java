@@ -1,7 +1,7 @@
-package fr.ds.katacoffee.bdd;
+package fr.xebia.katacoffee.bdd;
 
-import fr.ds.katacoffee.DrinkType;
-import fr.ds.katacoffee.Order;
+import fr.xebia.katacoffee.DrinkType;
+import fr.xebia.katacoffee.Order;
 
 public class OrderBuilder {
 
