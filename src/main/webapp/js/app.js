@@ -59,7 +59,14 @@ function snapshot() {
     	ctx.drawImage(imgField, 0, 0);
     	//TODO find a solution : security error with canvas.toDataURL('"image/png"');
     	//see http://stackoverflow.com/questions/20424279/canvas-todataurl-securityerror
-    	document.querySelector('.snapshotResult').src = "http://192.168.0.13:8080/photo.jpg";
+
+    	if(urlField.value != ""){
+    		document.querySelector('.snapshotResult').src = "http://192.168.0.13:8080/photo.jpg";
+    	}else{//TODO temp ! just for test working--> FIXME
+    		document.querySelector('.snapshotResult').src = "http://camera1.mairie-brest.fr/axis-cgi/jpg/image.cgi";	
+    	}
+    	
+    	
     }
 }
 
