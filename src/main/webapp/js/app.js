@@ -1,8 +1,10 @@
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
+var videoMode = "webcam";
 
 var constraints = {audio: false, video: true};
 var video = document.querySelector("video");
+var imgField = document.querySelector("#resultForIPWebCam");
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 
@@ -13,6 +15,7 @@ document.querySelector("#snapshot").addEventListener('click', snapshot, false);
 if(navigator.getUserMedia){
     navigator.getUserMedia(constraints, successCallback, errorCallback);	   
 }else{
+	videoMode = "ip";
    fallback();
 }
 
@@ -27,15 +30,16 @@ function successCallback(stream) {
 
 function fallback(e) {
 	var urlField = document.querySelector("#urlTxt");
-	document.querySelector("#url").style.visibility = 'visible';	
+	
+	document.querySelector("#url").classList.remove("hidden");
+	document.querySelector("#url").display="inline-block;"
 	var startButton = document.querySelector("#startIPWebcam");
 
 	startButton.addEventListener('click', function(){
-		var imgField = document.querySelector("#resultForIPWebCam");
+		
 		imgField.src = urlField.value;
 	}, false);
-	
-	video.style.visibility = 'hidden';
+	video.classList.add("hidden");	
 }
 
 
@@ -51,6 +55,11 @@ function snapshot() {
         // "image/webp" works in Chrome.
         // Other browsers will fall back to image/png.
         document.querySelector('img').src = canvas.toDataURL('image/webp');
+    }else{
+    	ctx.drawImage(imgField, 0, 0);
+    	//TODO find a solution : security error with canvas.toDataURL('"image/png"');
+    	//see http://stackoverflow.com/questions/20424279/canvas-todataurl-securityerror
+    	document.querySelector('.snapshotResult').src = "http://192.168.0.13:8080/photo.jpg";
     }
 }
 
