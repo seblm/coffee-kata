@@ -1,9 +1,20 @@
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
+
 var constraints = {audio: false, video: true};
 var video = document.querySelector("video");
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
+
+video.addEventListener('click', snapshot, false);		
+document.querySelector("#snapshot").addEventListener('click', snapshot, false);
+
+
+if(navigator.getUserMedia){
+    navigator.getUserMedia(constraints, successCallback, errorCallback);	   
+}else{
+   fallback();
+}
 
 function successCallback(stream) {
     window.stream = stream; // stream available to console
@@ -14,8 +25,24 @@ function successCallback(stream) {
     }
 }
 
+function fallback(e) {
+	var urlField = document.querySelector("#urlTxt");
+	document.querySelector("#url").style.visibility = 'visible';	
+	var startButton = document.querySelector("#startIPWebcam");
+
+	startButton.addEventListener('click', function(){
+		var imgField = document.querySelector("#resultForIPWebCam");
+		imgField.src = urlField.value;
+	}, false);
+	
+	video.style.visibility = 'hidden';
+}
+
+
+
 function errorCallback(error) {
     console.log("navigator.getUserMedia error: ", error);
+    fallback();
 }
 
 function snapshot() {
@@ -27,6 +54,3 @@ function snapshot() {
     }
 }
 
-video.addEventListener('click', snapshot, false);
-
-navigator.getUserMedia(constraints, successCallback, errorCallback);

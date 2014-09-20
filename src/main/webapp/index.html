@@ -9,11 +9,22 @@
 <div id="banner">
     Photo Machine
 </div>
+<button id="snapshot">Take a picture</button>
 
-<video id="live" autoplay></video>
-<img class="snapshotResult" src="" style="width: 640px; height: 480px">
-<canvas style="display:none;"></canvas>
-
+<div id="photobooth">
+	<video id="live" autoplay></video>
+	<div id="url" class="hidden">
+		<img id="resultForIPWebCam" style="visibility:hidden;"/>
+		<input type="text" id="urlTxt" title="url"/>
+		<p>Example :<br>
+		Ip Webcam on Android : http://192.168.0.13:8080/video;<br> 
+		Aquitaine : http://webcam.hahd.fr/mjpg/video.mjpg?camera=1
+		</p>
+		<button id="startIPWebcam">Start Stream</button>	
+	</div>
+	<img class="snapshotResult" src="" style="width: 640px; height: 480px">
+	<canvas style="display:none;"></canvas>
+</div>
 <script src="js/app.js"></script>
 </body>
 </html>
