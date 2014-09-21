@@ -7,9 +7,10 @@ var video = document.querySelector("video");
 var imgField = document.querySelector("#resultForIPWebCam");
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
+var snapshotBtn = document.querySelector(".snapshot"); 
 
 video.addEventListener('click', snapshot, false);		
-document.querySelector("#snapshot").addEventListener('click', snapshot, false);
+snapshotBtn.addEventListener('click', snapshot, false);
 
 
 if(navigator.getUserMedia){
@@ -29,15 +30,17 @@ function successCallback(stream) {
 }
 
 function fallback(e) {
-	var urlField = document.querySelector("#urlTxt");
+	var urlVideo = document.querySelector("#urlVideo");
+	var urlPhoto = document.querySelector("#urlPhoto");
 	
 	document.querySelector("#url").classList.remove("hidden");
 	document.querySelector("#url").display="inline-block;"
 	var startButton = document.querySelector("#startIPWebcam");
 
 	startButton.addEventListener('click', function(){
-		
-		imgField.src = urlField.value;
+		snapshotBtn.classList.remove("hidden");
+		snapshotBtn.classList.add("visible");
+		imgField.src = urlVideo.value;
 	}, false);
 	video.classList.add("hidden");	
 }
@@ -60,8 +63,9 @@ function snapshot() {
     	//TODO find a solution : security error with canvas.toDataURL('"image/png"');
     	//see http://stackoverflow.com/questions/20424279/canvas-todataurl-securityerror
 
-    	if(urlField.value != ""){
-    		document.querySelector('.snapshotResult').src = "http://192.168.0.13:8080/photo.jpg";
+    	if(urlPhoto.value){
+    		document.querySelector('.snapshotResult').src = urlPhoto.value;
+    		//document.querySelector('.snapshotResult').src = "http://192.168.0.13:8080/photo.jpg";
     	}else{//TODO temp ! just for test working--> FIXME
     		document.querySelector('.snapshotResult').src = "http://camera1.mairie-brest.fr/axis-cgi/jpg/image.cgi";	
     	}

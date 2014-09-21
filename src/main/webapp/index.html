@@ -14,18 +14,19 @@
 	<div id="camera" style="width:25%; display:inline-block; VERTICAL-ALIGN:TOP">
 	    <video id="live" autoplay></video>
 	    <div id="url" class="hidden">
-	        <input type="text" id="urlTxt" placeholder="url webcam"/><button id="startIPWebcam">Start Stream</button>
+	        <input type="text" id="urlVideo" placeholder="url video webcam"/>
+	        <input type="text" id="urlPhoto" placeholder="url photo webcam"/>
+	        <button id="startIPWebcam">Start Stream</button>
   	        <p>Example :<br>
 	            Ip Webcam on Android : http://192.168.0.13:8080/video<br> 
 	            Aquitaine : http://webcam.hahd.fr/mjpg/video.mjpg?camera=1
 	        </p>
 	        <img id="resultForIPWebCam" style="width: 300px; height: 150px"/>
-	            
 	    </div>	
 	</div>
 	
 	<div id="photo" style="width:45%X;display:inline-block;">
-	    <button id="snapshot" style="display: block;">TAKE A PICTURE</button>
+	    <button class="snapshot hidden">TAKE A PICTURE</button>
 	    <img class="snapshotResult" src="" style="width: 640px; height: 480px">
 	    <canvas></canvas>
 	</div>
