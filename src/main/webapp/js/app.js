@@ -35,7 +35,7 @@ function fallback(e) {
 	
 	document.querySelector("#url").classList.remove("hidden");
 	document.querySelector("#url").display="inline-block;"
-	var startButton = document.querySelector("#startIPWebcam");
+	var startButton = document.querySelector(".startIPWebcam");
 
 	startButton.addEventListener('click', function(){
 		//snapshotBtn.classList.remove("hidden");
