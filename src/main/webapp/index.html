@@ -2,35 +2,42 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>Photo Machine</title>
+    <title>XebiaMaton</title>
     <link rel="stylesheet" href="styles/index.css"/>
+<!--      <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>-->
 </head>
 <body>
-<div id="banner">
-    Photo Machine
-</div>
 
-<div id="photobooth" style="display:inline-block;">
-	<div id="camera" style="width:25%; display:inline-block; VERTICAL-ALIGN:TOP">
-	    <video id="live" autoplay></video>
-	    <div id="url" class="hidden">
-	        <input type="text" id="urlVideo" placeholder="url video webcam"/>
-	        <input type="text" id="urlPhoto" placeholder="url photo webcam"/>
-	        <button id="startIPWebcam">Start Stream</button>
-  	        <p>Example :<br>
-	            Ip Webcam on Android : http://192.168.0.13:8080/video<br> 
-	            Aquitaine : http://webcam.hahd.fr/mjpg/video.mjpg?camera=1
-	        </p>
-	        <img id="resultForIPWebCam" style="width: 300px; height: 150px"/>
-	    </div>	
+<header class="navbar">
+	<div class="banner">
+	    <span>XebiaMaton</span>
 	</div>
-	
-	<div id="photo" style="width:45%X;display:inline-block;">
-	    <button class="snapshot">TAKE A PICTURE</button>
-	    <img class="snapshotResult" src="" style="width: 640px; height: 480px">
-	    <canvas></canvas>
+</header>
+
+<section class="content">
+	<div class="photobooth">
+		<div id="camera">
+		    <video id="live" autoplay></video>
+		    <div id="url" class="hidden">
+		        <input type="text" id="urlVideo" placeholder="url video webcam"/>
+		        <input type="text" id="urlPhoto" placeholder="url photo webcam"/>
+		        <button id="startIPWebcam">Start Stream</button>
+	  	        <p>Example :<br>
+		            Ip Webcam on Android : http://192.168.0.13:8080/video<br> 
+		            Aquitaine : http://webcam.hahd.fr/mjpg/video.mjpg?camera=1
+		        </p>
+		    </div>	
+            <img class="ipWebcamResult"/>		    
+		</div>
+		
+		<div id="photo">
+		    <button class="snapshot">TAKE A PICTURE</button>
+		    <img class="snapshotResult" src="">
+		    <canvas></canvas>
+		</div>
 	</div>
-</div>
+</section>
 <script src="js/app.js"></script>
 </body>
 </html>

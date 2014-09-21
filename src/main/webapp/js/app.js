@@ -4,7 +4,7 @@ var videoMode = "webcam";
 
 var constraints = {audio: false, video: true};
 var video = document.querySelector("video");
-var imgField = document.querySelector("#resultForIPWebCam");
+var imgField = document.querySelector(".ipWebcamResult");
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var snapshotBtn = document.querySelector(".snapshot"); 

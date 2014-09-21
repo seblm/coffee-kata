@@ -1,3 +1,68 @@
+html,
+body {
+  background-color: #eeeeee;
+  padding: 0;
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #333;
+}
+p {
+    margin: 0 0 10px;
+}
+.navbar{
+	margin-bottom : 20px;
+}
+
+.banner {
+  position: relative;
+  top: 0;
+  border-width: 0 0 1px;
+  
+  margin-bottom: 20 px;
+  
+  background-color: #6b1d60;
+  
+  z-index: 1;
+  background-image: url('/img/hello-xebia.png');
+  background-size: 147px 49px;
+  background-repeat: no-repeat;
+  /*background-position: left;*/
+  
+  padding:20px 0 30px 500px;
+  font-size: x-large;
+  color: #ffffff;
+}
+
+section.content{
+	margin-left:30px;
+}
+.photobooth{
+	display:inline-block;
+}
+#camera{
+	display:inline-block;
+	width:40%;
+	vertical-align:top;
+}
+#camera>div>p{
+	font-size:small;
+}
+#photo{
+    display:inline-block;
+    width:40%;
+    vertical-align:top;
+}
+.snapshotResult{
+    width:640px; 
+    height: 480px;
+}
+.ipWebcamResult{
+    width: 300px; 
+    height: 150px
+}
+
+
 .hidden{
 	display:none;
 }
