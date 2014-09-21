@@ -38,7 +38,7 @@ function fallback(e) {
 	var startButton = document.querySelector("#startIPWebcam");
 
 	startButton.addEventListener('click', function(){
-		snapshotBtn.classList.remove("hidden");
+		//snapshotBtn.classList.remove("hidden");
 		snapshotBtn.classList.add("visible");
 		imgField.src = urlVideo.value;
 	}, false);
