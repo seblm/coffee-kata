@@ -1,12 +1,16 @@
-## Back to basics : Prendre une photo couleur ou n&b
-	1. Le photomaton doit pouvoir prendre une photo d'un utilisateur
-	2. Le photomaton doit pouvoir imprimer la photo en couleur ou en N&B.
-		* Le format de sortie est fixe : 10*15 cm.
+## Iteration 0 : Prendre une photo portrait couleur 
+	1. Le photomaton doit pouvoir prendre une photo portrait couleur d'un utilisateur.
+		* Un portrait représente une photo finale.
+		
+## Iteration 1 : Prendre une photo portrait N&B 		
+	2. Le photomaton doit pouvoir prendre une photo portrait couleur d'un utilisateur.
 
-## Faire du profit : le photomaton devient payant
+## Iteration 2 : le photomaton devient payant
 	1. Le photomaton ne doit pas permettre à un utilisateur de prendre une photo avant d'avoir payé son prix : 
-		* Le prix d'une photo couleur : 3€
-		* Le prix d'une photo N&B : 2,75€
+		* Le prix d'une photo portrait couleur : 3€
+		* Le prix d'une photo portrait N&B : 2,75€
+[ deux types de tests : - un test pour vérifier le fait de bien appeler le module de validation
+			- un test unitaire pour tester la logique métier : monnaie suffisante, insuffisante, etc...  ]
 	2. Un utilisateur a quatre essais pour réussir sa photo. Au bout du quatrième essai, le photomaton doit montrer les quatre photos
 	à l'utilisateur qui choisit alors celle à imprimer.
 
