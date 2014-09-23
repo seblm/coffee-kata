@@ -50,6 +50,7 @@ public class MyStepdefs {
     
     @Given("^I fill video url")
     public void I_fill_video_url() {
+        phantomJsTest.await().atMost(5, TimeUnit.SECONDS).until("#urlVideo").areDisplayed();
     	phantomJsTest.fill("#urlVideo").with("http://webcam.hahd.fr/mjpg/video.mjpg?camera=1");
     	//phantomJsTest.fill("#urlPhoto").with("todo");    	
     }    
@@ -67,7 +68,7 @@ public class MyStepdefs {
     @When("^I click on snapshot button$")
     public void I_click_on_snapshot_button() {
     	phantomJsTest.takeScreenShot();
-        phantomJsTest.click(".snapshotButton");
+        phantomJsTest.click(".snapshot");
     }
 
     @Then("^My picture should be displayed$")
