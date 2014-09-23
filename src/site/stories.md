@@ -1,6 +1,8 @@
 ## Iteration 0 : Prendre une photo portrait couleur 
 	1. Le photomaton doit pouvoir prendre une photo portrait couleur d'un utilisateur.
 		* Un portrait représente une unique photo finale.
+		
+NB : un utilisateur peut prendre autant de photos qu'il le désire, il doit cependant valider celle qu'il veut voir traitée par le photomaton.		
 
 ###Introduction du picture processor 
 Le photomaton inclue déjà une brique qui à partir d'une photo brute, retourne une photo traitée selon un ordre. Il s'agit du picture processor. Cette brique utilise un protocole particulier suivant le format : 
