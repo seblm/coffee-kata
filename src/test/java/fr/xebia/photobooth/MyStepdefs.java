@@ -1,5 +1,9 @@
 package fr.xebia.photobooth;
 
+import java.io.IOException;
+import java.net.BindException;
+import java.net.ServerSocket;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import cucumber.api.java.After;
@@ -16,11 +20,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MyStepdefs {
 
     private final PhantomJsTest phantomJsTest;
-    private final TomcatRule tomcatRule;
+    private Optional<TomcatRule> tomcatRule;
     
-    public MyStepdefs() {
+    public MyStepdefs() throws IOException {
         phantomJsTest = new PhantomJsTest("http://localhost:8080");
-        tomcatRule = new TomcatRule();
+        tomcatRule = tomcatRuleOrEmptyIfAlreadyStarted();
     }
 
     @Before
@@ -30,12 +34,12 @@ public class MyStepdefs {
 
     @Before
     public void startTomcat() throws Throwable {
-        tomcatRule.before();
+        tomcatRule.ifPresent(TomcatRule::before);
     }
 
     @After
-    public void stopTomcat() throws Throwable {
-        tomcatRule.after();
+    public void stopTomcat() {
+        tomcatRule.ifPresent(TomcatRule::after);
     }
 
     @Given("^I go to homepage$")
@@ -69,5 +73,12 @@ public class MyStepdefs {
     @Then("^My picture should be displayed$")
     public void My_picture_should_be_displayed() {
         assertThat(phantomJsTest.find(".snapshotResult").getAttribute("src")).isNotEmpty();
+    }
+    private Optional<TomcatRule> tomcatRuleOrEmptyIfAlreadyStarted() throws IOException {
+        try (ServerSocket ignored = new ServerSocket(8080)) {
+            return Optional.of(new TomcatRule());
+        } catch (BindException e) {
+            return Optional.<TomcatRule>empty();
+        }
     }
 }
