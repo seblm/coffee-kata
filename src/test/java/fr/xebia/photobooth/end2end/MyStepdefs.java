@@ -1,4 +1,4 @@
-package fr.xebia.photobooth;
+package fr.xebia.photobooth.end2end;
 
 import java.io.IOException;
 import java.net.BindException;
@@ -74,6 +74,7 @@ public class MyStepdefs {
     public void My_picture_should_be_displayed() {
         assertThat(phantomJsTest.find(".snapshotResult").getAttribute("src")).isNotEmpty();
     }
+
     private Optional<TomcatRule> tomcatRuleOrEmptyIfAlreadyStarted() throws IOException {
         try (ServerSocket ignored = new ServerSocket(8080)) {
             return Optional.of(new TomcatRule());
