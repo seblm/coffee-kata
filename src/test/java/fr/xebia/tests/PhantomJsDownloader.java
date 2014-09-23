@@ -24,7 +24,7 @@ public class PhantomJsDownloader {
         isWindows = osName.startsWith("Windows");
         isMac = osName.startsWith("Mac OS X") || osName.startsWith("Darwin");
         isLinux64 = System.getProperty("sun.arch.data.model").equals("64");
-        version = "1.9.2";
+        version = "1.9.7";
     }
 
     private static void unzip(File zip, File toDir) throws IOException {
@@ -53,16 +53,16 @@ public class PhantomJsDownloader {
         String url;
         File phantomJsExe;
         if (isWindows) {
-            url = format("https://phantomjs.googlecode.com/files/phantomjs-%s-windows.zip", version);
+            url = format("https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-%s-windows.zip", version);
             phantomJsExe = new File(installDir, format("phantomjs-%s-windows/phantomjs.exe", version));
         } else if (isMac) {
-            url = format("https://phantomjs.googlecode.com/files/phantomjs-%s-macosx.zip", version);
+            url = format("https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-%s-macosx.zip", version);
             phantomJsExe = new File(installDir, format("phantomjs-%s-macosx/bin/phantomjs", version));
         } else if (isLinux64) {
-            url = format("https://phantomjs.googlecode.com/files/phantomjs-%s-linux-x86_64.tar.bz2", version);
+            url = format("https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-%s-linux-x86_64.tar.bz2", version);
             phantomJsExe = new File(installDir, format("phantomjs-%s-linux-x86_64/bin/phantomjs", version));
         } else {
-            url = format("https://phantomjs.googlecode.com/files/phantomjs-%s-linux-i686.tar.bz2", version);
+            url = format("https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-%s-linux-i686.tar.bz2", version);
             phantomJsExe = new File(installDir, format("phantomjs-%s-linux-i686/bin/phantomjs", version));
         }
 

@@ -52,7 +52,7 @@ public class PhantomJsTest extends FluentAdapter {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomJsExe.getAbsolutePath());
 
-        DriverService service = PhantomJSDriverService.createDefaultService(capabilities);
+        PhantomJSDriverService service = PhantomJSDriverService.createDefaultService(capabilities);
 
         return new PhantomJSDriver(service, capabilities);
     }
