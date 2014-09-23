@@ -2,7 +2,7 @@ Feature: Identity pictures
 
   A photomaton can't take identy pictures that respect state standards. When you choose this format you get four pictures in the end.
 
-  Scenario Outline : a user can't choose black and white or vintage format for identity pictures
+  Scenario Outline: a user can't choose black and white or vintage format for identity pictures
 
     When a user choose "<format>" identity pictures
     Then the photomaton should inform the user that this choice is not available
