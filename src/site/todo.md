@@ -1,4 +1,13 @@
 ## TODO
 
-1. mocker getUserMedia pour lancer l'application en mode test
-2. todo utiliser une ip webcam avec l'iPhone
+###Front
+    * Choix d'une commande
+
+
+###Service
+    * Stocker les images dans src/main/webapp
+    
+
+###Logique
+    * Brancher le Logic/PhotoMaker/Processor
+    * Implem random du service de validation
