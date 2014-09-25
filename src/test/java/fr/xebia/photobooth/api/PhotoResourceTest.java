@@ -23,7 +23,7 @@ public class PhotoResourceTest {
     @Test
     public void should_return_hello_world_string() {
     	String output = photoResource.getHelloWorld();
-    	assertThat(output).isEqualTo("Hello World");
+    	assertThat(output).isEqualTo("Hello world");
     }    
     @Test
     public void should_save_to_file_base_64_string() {

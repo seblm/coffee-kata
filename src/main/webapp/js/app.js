@@ -90,20 +90,15 @@ function savePicture () {
 		url: options.url,
 		type: 'POST',
 		dataType: 'json',
-		data: { 'data_url': document.querySelector('.snapshotResult').src },
+		data: { 'picture': document.querySelector('.snapshotResult').src },
 		complete: function(xhr, textStatus) {
-		// Request complete.
 		},
-		// Request was successful.
 		success: function(response, textStatus, xhr) {
 			console.log('Response: ', response);
-			// Conversion successful.
+
 			if (response.status_code === 200) {
 				console.log(response);
-				imageURL = response.data.image_url;
-				// Paste the PNG image url into the input field.
-				//that.imageURLInput.value = imageURL;
-                //that.imageURLInput.removeAttribute('disabled');
+				document.querySelector('.snapshotResult').src = response;
 			}
 		},
 		error: function(xhr, textStatus, errorThrown) {
