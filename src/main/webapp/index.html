@@ -22,7 +22,7 @@
 		    <div id="url" class="hidden">
 		        <input type="text" id="urlVideo" placeholder="url video webcam"/>
 		        <input type="text" id="urlPhoto" placeholder="url photo webcam"/>
-		        <button class="startIPWebcam">Start Stream</button>
+		        <button class="btn startIPWebcam">Start Stream</button>
 	  	        <p>Example :<br>
 		            Ip Webcam on Android : http://192.168.0.13:8080/video<br> 
 		            Aquitaine : http://webcam.hahd.fr/mjpg/video.mjpg?camera=1
@@ -32,12 +32,17 @@
 		</div>
 		
 		<div id="photo">
-		    <button class="snapshot">TAKE A PICTURE</button>
+		    <button class="btn snapshot">TAKE A PICTURE</button>
 		    <img class="snapshotResult" src="">
 		    <canvas></canvas>
 		</div>
+		<div id="action">
+		  <button type="button" class="btn btn-confirm">Ok</button>
+		  <button type="button" class="btn btn-cancel">Cancel</button>
+		</div>
 	</div>
 </section>
+<script src="vendor/jquery-2.1.1.min.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

@@ -11,6 +11,8 @@ var snapshotBtn = document.querySelector(".snapshot");
 
 video.addEventListener('click', snapshot, false);
 snapshotBtn.addEventListener('click', snapshot, false);
+document.querySelector(".btn-cancel").addEventListener('click', cancelPicture, false);
+document.querySelector(".btn-confirm").addEventListener('click', savePicture, false);
 
 
 if (navigator.getUserMedia) {
@@ -72,4 +74,42 @@ function snapshot() {
 
     }
 }
+
+function cancelPicture(){
+	document.querySelector('.snapshotResult').src = "";
+}
+function savePicture () {
+	var that = this;
+	var options = {
+		// Change this to your own url.
+		url: 'rest/photos/save'
+	};
+	
+
+	$.ajax({
+		url: options.url,
+		type: 'POST',
+		dataType: 'json',
+		data: { 'data_url': document.querySelector('.snapshotResult').src },
+		complete: function(xhr, textStatus) {
+		// Request complete.
+		},
+		// Request was successful.
+		success: function(response, textStatus, xhr) {
+			console.log('Response: ', response);
+			// Conversion successful.
+			if (response.status_code === 200) {
+				console.log(response);
+				imageURL = response.data.image_url;
+				// Paste the PNG image url into the input field.
+				//that.imageURLInput.value = imageURL;
+                //that.imageURLInput.removeAttribute('disabled');
+			}
+		},
+		error: function(xhr, textStatus, errorThrown) {
+			console.log('Error: ', errorThrown);
+		}
+	});
+}
+
 
