@@ -46,7 +46,7 @@ public class PhotoResource {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}		
-		return urlFile.getAbsolutePath();
+		return urlFile.getName();
 	}	
 	
 	
