@@ -1,15 +1,16 @@
 package fr.xebia.photobooth.api;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import static org.assertj.core.api.Assertions.assertThat;
+
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PhotoResourceTest {
     @Rule
@@ -41,7 +42,8 @@ public class PhotoResourceTest {
 
     @Test
     public void should_save_to_file_url_string() throws IOException {
-        String fileName = photoResource.saveToFileWithURL(this.getClass().getResource("/image.png").toString());
+        String localFileTouDownload = this.getClass().getResource("/image.png").toString();
+		String fileName = photoResource.saveToFileWithURL(localFileTouDownload);
 
     	String absFilePath = System.getProperty("java.io.tmpdir") + File.separator + fileName;
     	File file = new File(absFilePath);

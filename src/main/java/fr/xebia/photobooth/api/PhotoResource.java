@@ -8,12 +8,16 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.Base64;
+
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+
 import fr.xebia.photobooth.domain.Logic;
 import fr.xebia.photobooth.domain.Order;
 
@@ -36,7 +40,8 @@ public class PhotoResource {
 
     @POST
     @Path("/save")
-    public String saveToFile(@PathParam("picture") String base64Picture) throws IOException {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String saveToFile(String base64Picture) throws IOException {
         byte[] data = Base64.getDecoder().decode(base64Picture);
         File urlFile = File.createTempFile("image", ".png");
 
@@ -47,9 +52,11 @@ public class PhotoResource {
         return urlFile.getName();
     }
 
-    @POST
+    @POST	
     @Path("/saveWithURL")
+    @Consumes(MediaType.APPLICATION_JSON)
     public String saveToFileWithURL(String pictureUrl) throws IOException {
+    System.out.println(pictureUrl);
         File targetFile = File.createTempFile("image", ".png");
         targetFile.delete();
 
