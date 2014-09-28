@@ -21,7 +21,8 @@ public class PhotoResourceIT {
 
 	@Test
 	public void should_download_picture_and_create_file() {
-		given().body("http://camera1.mairie-brest.fr/axis-cgi/jpg/image.cgi")
+		given().port(tomcatRule.port())
+                .body("http://camera1.mairie-brest.fr/axis-cgi/jpg/image.cgi")
 				.contentType(JSON).log().all().
 		when().post("/rest/photos/saveWithURL").
 		then().statusCode(200).

@@ -16,38 +16,38 @@ import cucumber.api.java.en.When;
 import fr.xebia.tests.PhantomJsTest;
 import fr.xebia.tests.TomcatRule;
 
+import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
+import org.fluentlenium.core.domain.FluentList;
+import org.fluentlenium.core.domain.FluentWebElement;
 
 public class MyStepdefs {
 
-    private final PhantomJsTest phantomJsTest;
+    private PhantomJsTest phantomJsTest;
     private Optional<TomcatRule> tomcatRule;
     
     public MyStepdefs() throws IOException {
-        phantomJsTest = new PhantomJsTest("http://localhost:8080");
         tomcatRule = tomcatRuleOrEmptyIfAlreadyStarted();
     }
 
     @Before
-    public void startWebDriver() {
+    public void startTomcatAndWebDriver() {
+        tomcatRule.ifPresent(TomcatRule::before);
+        phantomJsTest = new PhantomJsTest(format("http://localhost:%d", port()));
         phantomJsTest.starting();
     }
 
+    private Integer port() {
+        return tomcatRule.map(TomcatRule::port).orElse(8080);
+    }
+
     @After
-    public void stopWebDriver() {
+    public void stopTomcatAndWebDriver() {
         phantomJsTest.getDriver().close();
-    }
-
-    @Before
-    public void startTomcat() throws Throwable {
-        tomcatRule.ifPresent(TomcatRule::before);
-    }
-
-    @After
-    public void stopTomcat() {
         tomcatRule.ifPresent(rule -> {
             rule.after();
             try {
+                Thread.sleep(100);
                 while (!portIsNotBind(8080)) {
                     System.out.println("tomcat arrive pas à s'éteindre");
                     Thread.sleep(100);
@@ -132,6 +132,13 @@ public class MyStepdefs {
     @Then("^the photomaton should print the full color portrait of the user$")
     public void the_photomaton_should_print_the_full_color_portrait_of_the_user() throws Throwable {
         Thread.sleep(5000);
-        phantomJsTest.find(".link").getAttribute("href").startsWith("http://localhost:8080/image");
+        String href = phantomJsTest.find(".link").getAttribute("href");
+
+        assertThat(href).isNotNull().startsWith(format("http://localhost:%d/image", port()));
+    }
+
+    @Then("^I can send the link to my mother$")
+    public void I_can_send_the_link_to_my_mother() throws Throwable {
+        the_photomaton_should_print_the_full_color_portrait_of_the_user();
     }
 }
