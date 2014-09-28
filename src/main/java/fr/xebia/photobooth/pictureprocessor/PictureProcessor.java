@@ -29,23 +29,29 @@ public class PictureProcessor {
             case "M":
                 formatted = Formatter.format(4, 4, buffered);
                 break;
-            default:
+            case "P":
                 formatted = buffered;
+                break;
+            default:
+                throw new IllegalArgumentException("The format " + format + " is not known");
         }
         return formatted;
     }
 
-    private Image applyColorimetry(BufferedImage pictureToModify, String Colorimetry) throws Exception {
+    private Image applyColorimetry(BufferedImage pictureToModify, String colorimetry) throws Exception {
         Image filtered;
-        switch (Colorimetry) {
-            case "NB":
+        switch (colorimetry) {
+            case "BW":
                 filtered = NBFilter.applyFilter(pictureToModify);
                 break;
-            case "S":
+            case "V":
                 filtered = SepiaFilter.applyFilter(pictureToModify, 15);
                 break;
-            default:
+            case "C":
                 filtered = pictureToModify;
+                break;
+            default:
+                throw new IllegalArgumentException("The colorimetry " + colorimetry + " is not known");
         }
         return filtered;
     }

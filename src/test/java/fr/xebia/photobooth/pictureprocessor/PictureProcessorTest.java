@@ -16,7 +16,7 @@ public class PictureProcessorTest {
 
     @Test
     public void should_apply_classic_potrait_sepia() throws Exception {
-        writeModifiedSamplePicture(pictureProcessor.process("S:P", getSamplePicture()));
+        writeModifiedSamplePicture(pictureProcessor.process("V:P", getSamplePicture()));
     }
 
     @Test
@@ -26,7 +26,7 @@ public class PictureProcessorTest {
 
     @Test
     public void should_apply_classic_mini_nb() throws Exception {
-        writeModifiedSamplePicture(pictureProcessor.process("NB:M", getSamplePicture()));
+        writeModifiedSamplePicture(pictureProcessor.process("BW:M", getSamplePicture()));
     }
 
     private File getSamplePicture() throws URISyntaxException {
