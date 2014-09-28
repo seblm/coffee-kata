@@ -1,6 +1,7 @@
 package fr.xebia.photobooth.api;
 
 import fr.xebia.photobooth.domain.Order;
+import fr.xebia.photobooth.domain.Validation;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -8,10 +9,6 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.Base64;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
 
 
 @Path("/photos")
@@ -19,6 +16,7 @@ import javax.ws.rs.Produces;
 public class PhotoResource {
 
     @GET
+    @Path("/hello")
     public String getHelloWorld() {
         return "Hello world";
     }
@@ -28,6 +26,16 @@ public class PhotoResource {
     public void newPhoto(Order order) {
 
     }
+
+
+    @POST
+    @Path("/check")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public boolean checkCommand(Order order) {
+        return Validation.INSTANCE.isValid(order);
+    }
+
+
 
     @POST
     @Path("/save")

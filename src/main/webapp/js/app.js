@@ -38,15 +38,14 @@ function savePicture () {
 function chooseCmd(cmd){
     command = cmd;
     document.querySelector(".order-cmd").classList.remove("hidden");
+    document.querySelector(".photobooth").classList.add("hidden");
 }
 
 function orderCmd(){
-    url = "/rest/photos/create";
-    data = {
-        format:"PORTRAIT",
-        colorimetry:"COLOR",
-        money:0
-    };
+    url = "/rest/photos/check";
+    data = {"colorimetry":"COLOR","format":"PORTRAIT", "money":0};
+
+
     postData(url, data)
     .done(function(result){
         document.querySelector(".order-cmd").classList.add("hidden");
@@ -54,8 +53,11 @@ function orderCmd(){
     })
     .fail(function(error){
         console.log(error);
+        //TODO temp fix rest call
+        document.querySelector(".order-cmd").classList.add("hidden");
+        document.querySelector(".photobooth").classList.remove("hidden");
+
      });
-//todo then okcallback
 
 }
 
@@ -67,6 +69,14 @@ function postData(url, data){
 			dataType: 'json',
 			contentType: "application/json; charset=utf-8",
 			data: data,
+		});
+}
+function getData(url){
+		return $.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'json',
+			contentType: "application/json; charset=utf-8"
 		});
 
 }

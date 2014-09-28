@@ -8,10 +8,16 @@ public class Order {
     public final Colorimetry colorimetry;
     public final BigDecimal money;
 
-    public Order(Colorimetry colorimetry, Format portrait, BigDecimal money) {
+    public Order(Colorimetry colorimetry, Format format, BigDecimal money) {
         this.colorimetry = colorimetry;
-        this.format = portrait;
+        this.format = format;
         this.money = money;
+    }
+
+    public Order(String colorimetry, String format, String money) {
+        this.colorimetry = Colorimetry.valueOf(colorimetry);
+        this.format = Format.valueOf(format);
+        this.money = new BigDecimal(money);
     }
 
 }

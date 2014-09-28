@@ -30,8 +30,8 @@ var WebcamHandler = {
 	    console.log(this.webcam.restUrlForSave);
 	    console.log(this.webcam.dataToSend);
 
-        postData(this.webcam.restUrlForSave, data)
-        .done(function(this.webcam.dataToSend){
+        postData(this.webcam.restUrlForSave, this.webcam.dataToSend)
+        .done(function(response){
                 document.querySelector('#savedPicture').value = response;
         })
         .fail(function(error){
