@@ -1,17 +1,12 @@
 package fr.xebia.photobooth.domain;
 
-import java.math.BigDecimal;
-
-
 public class Order {
-    public final Format format;
-    public final Colorimetry colorimetry;
-    public final BigDecimal money;
+    public final Picture picture;
+    public final Double money;
 
-    public Order(Colorimetry colorimetry, Format portrait, BigDecimal money) {
-        this.colorimetry = colorimetry;
-        this.format = portrait;
+    public Order(Picture picture, Double money) {
         this.money = money;
+        this.picture = picture;
     }
 
 }

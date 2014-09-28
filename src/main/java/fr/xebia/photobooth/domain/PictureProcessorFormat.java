@@ -5,4 +5,14 @@ public class PictureProcessorFormat implements Format.FormatVisitor {
     public String visitPortrait() {
         return "P";
     }
+
+    @Override
+    public String visitIdentity() {
+        return "I";
+    }
+
+    @Override
+    public String visitMini() {
+        return "M";
+    }
 }

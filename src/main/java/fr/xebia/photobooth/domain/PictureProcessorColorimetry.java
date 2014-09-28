@@ -5,4 +5,14 @@ public class PictureProcessorColorimetry implements Colorimetry.ColorimetryVisit
     public String visitColor() {
         return "C";
     }
+
+    @Override
+    public String visitBlackAndWhite() {
+        return "BW";
+    }
+
+    @Override
+    public String visitVintage() {
+        return "V";
+    }
 }

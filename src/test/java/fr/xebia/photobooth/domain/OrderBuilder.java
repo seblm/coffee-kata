@@ -1,36 +1,28 @@
 package fr.xebia.photobooth.domain;
 
-import java.math.BigDecimal;
-
 import static fr.xebia.photobooth.domain.Colorimetry.COLOR;
 import static fr.xebia.photobooth.domain.Format.PORTRAIT;
 
 public class OrderBuilder {
 
-    private Colorimetry colorimetry = COLOR;
-    private Format format = PORTRAIT;
-    private BigDecimal money = new BigDecimal(2.5);
+    private Double money = 2.0;
+    private Picture picture = new Picture(COLOR, PORTRAIT);
 
-    public Order build(){
-        return new Order(colorimetry, format, money);
-    }
-
-    public static Order anOrder(){
+    public static Order anOrder() {
         return new OrderBuilder().build();
     }
 
-    public OrderBuilder withColorimetry(Colorimetry colorimetry){
-        this.colorimetry = colorimetry;
-        return this;
+    public Order build() {
+        return new Order(picture, money);
     }
 
-    public OrderBuilder withFormat(Format format){
-        this.format = format;
-        return this;
-    }
-
-    public OrderBuilder withMoney(BigDecimal money){
+    public OrderBuilder withMoney(Double money) {
         this.money = money;
+        return this;
+    }
+
+    public OrderBuilder withPicture(Picture picture) {
+        this.picture = picture;
         return this;
     }
 }
