@@ -14,14 +14,10 @@ p {
 	margin-bottom : 20px;
 }
 
-.btn-confirm {
-    color: #fff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
-}
-
 
 .btn {
+    //background-color:#FAFCF0;
+    background-color:button-face;
 	display: inline-block;
 	padding: 6px 12px;
 	margin-bottom: 0;
@@ -41,6 +37,12 @@ p {
 	-o-user-select: none;
 	user-select: none;
 }
+.btn-confirm {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
 
 .banner {
   position: relative;
@@ -61,12 +63,62 @@ p {
   font-size: x-large;
   color: #ffffff;
 }
+aside{
+    width:15%;
+    float:left;
 
+}
+aside>h4{
+    margin-left:30px;
+}
+.btn-group {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.btn-group>.btn {
+    display: block;
+    float: none;
+    width: 100%;
+    max-width: 100%;
+}
+.btn-command {
+    color: #5bc0de;
+    background-color: #fff;
+    border-color: #357ebd;
+}
+.btn-command.activ {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+.btn-identity-color {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+.btn-identity-bw {
+color: #fff;
+background-color: #d9534f;
+border-color: #d43f3a;
+}
+section{
+    width:85%;
+    float:right;
+}
 section.content{
-	margin-left:30px;
+	//margin-left:30px;
+}
+
+.order-cmd{
+margin-left: 70px;
+margin-top: 50px;
+}
+.order-cmd>button{
+    margin-left : 10px;
 }
 .photobooth{
-	display:inline-block;
+	//display:inline-block;
 }
 #camera{
 	display:inline-block;

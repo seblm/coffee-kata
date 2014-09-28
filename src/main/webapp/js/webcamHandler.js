@@ -30,6 +30,16 @@ var WebcamHandler = {
 	    console.log(this.webcam.restUrlForSave);
 	    console.log(this.webcam.dataToSend);
 
+        postData(this.webcam.restUrlForSave, data)
+        .done(function(this.webcam.dataToSend){
+                document.querySelector('#savedPicture').value = response;
+        })
+        .fail(function(error){
+            console.log(error);
+         });
+
+
+/*
 		$.ajax({
 			url: this.webcam.restUrlForSave,
 			type: 'POST',
@@ -48,6 +58,7 @@ var WebcamHandler = {
 				console.log('Error: ', errorThrown);
 			}
 		});
+*/
 
     }
 }

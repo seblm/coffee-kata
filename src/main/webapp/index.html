@@ -14,9 +14,28 @@
 	    <span>XebiaMaton</span>
 	</div>
 </header>
+<aside><h3>Choose a command</h3>
+    <div class="btn-group">
+        <button type="button" class="btn btn-command portrait-color activ">Portrait couleur</button>
+        <button type="button" class="btn btn-command portrait-bw">Portrait N&B</button>
+        <button type="button" class="btn btn-command portrait-old">Portrait Ancien</button>
+        <button type="button" class="btn btn-command identity-color">Identité Couleur</button>
+        <button type="button" class="btn btn-command identity-bw">Identité N&B</button>
 
+    </div>
+    <!--<ul>-->
+        <!--<li><a href="#" onclick="portraitCmd();">Portrait couleur</a></li>-->
+    <!--</ul>-->
+</aside>
 <section class="content">
-	<div class="photobooth">
+    <div class="order-cmd hidden">
+        <label>Prix : </label><span>0 €</span>
+        <button class="btn btn-order-cmd">Commander une photo</button>
+    </div>
+
+
+
+	<div class="photobooth hidden">
 		<div id="camera">
 		    <video id="live" autoplay class="hidden"
 		    ></video>
