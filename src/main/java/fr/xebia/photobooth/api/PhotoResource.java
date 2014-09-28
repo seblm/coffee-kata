@@ -8,6 +8,10 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.Base64;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 
 @Path("/photos")
@@ -43,7 +47,6 @@ public class PhotoResource {
     @Path("/saveWithURL")
     @Consumes(MediaType.APPLICATION_JSON)
     public String saveToFileWithURL(String pictureUrl) throws IOException {
-        System.out.println(pictureUrl);
         File targetFile = File.createTempFile("image", ".png");
         targetFile.delete();
 
