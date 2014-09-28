@@ -1,13 +1,14 @@
 package fr.xebia.photobooth.pictureprocessor;
 
 import com.google.common.io.Resources;
+import fr.xebia.photobooth.external.pictureprocessor.PictureProcessor;
 import org.junit.Test;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class PictureProcessorTest {
@@ -16,25 +17,24 @@ public class PictureProcessorTest {
 
     @Test
     public void should_apply_classic_potrait_sepia() throws Exception {
-        writeModifiedSamplePicture(pictureProcessor.process("V:P", getSamplePicture()));
+        File processedPicture = pictureProcessor.process("V;P", getPicture("dog.jpeg"));
+        assertThat(Files.isSameFile(processedPicture.toPath(), getPicture("dog-sepia.jpeg").toPath()));
     }
 
     @Test
     public void should_apply_official_identity() throws Exception {
-        writeModifiedSamplePicture(pictureProcessor.process("C:I", getSamplePicture()));
+        File processedPicture = pictureProcessor.process("C;I", getPicture("dog.jpeg"));
+        assertThat(Files.isSameFile(processedPicture.toPath(), getPicture("dog-identity.jpeg").toPath()));
     }
 
     @Test
     public void should_apply_classic_mini_nb() throws Exception {
-        writeModifiedSamplePicture(pictureProcessor.process("BW:M", getSamplePicture()));
+        File processedPicture = pictureProcessor.process("BW;M", getPicture("dog.jpeg"));
+        assertThat(Files.isSameFile(processedPicture.toPath(), getPicture("dog-mini.jpeg").toPath()));
     }
 
-    private File getSamplePicture() throws URISyntaxException {
-        return new File(Resources.getResource("dog.jpeg").toURI());
+    private File getPicture(String resourceName) throws URISyntaxException {
+        return new File(Resources.getResource(resourceName).toURI());
     }
 
-    private void writeModifiedSamplePicture(Image processedPicture) throws IOException {
-        File outputfile = new File("modifiedDogs.jpeg");
-        ImageIO.write((java.awt.image.RenderedImage) processedPicture, "jpeg", outputfile);
-    }
 }

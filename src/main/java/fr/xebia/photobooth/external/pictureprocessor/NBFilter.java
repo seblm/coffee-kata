@@ -1,4 +1,4 @@
-package fr.xebia.photobooth.pictureprocessor;
+package fr.xebia.photobooth.external.pictureprocessor;
 
 import java.awt.*;
 import java.awt.color.ColorSpace;

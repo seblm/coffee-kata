@@ -1,25 +1,13 @@
 package fr.xebia.photobooth.api;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import fr.xebia.photobooth.domain.Order;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.Base64;
-
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
-
-import fr.xebia.photobooth.domain.Logic;
-import fr.xebia.photobooth.domain.Order;
 
 
 @Path("/photos")
@@ -31,11 +19,10 @@ public class PhotoResource {
         return "Hello world";
     }
 
-
     @POST
     @Path("/create")
     public void newPhoto(Order order) {
-        Logic.INSTANCE.run(order);
+
     }
 
     @POST
@@ -52,11 +39,11 @@ public class PhotoResource {
         return urlFile.getName();
     }
 
-    @POST	
+    @POST
     @Path("/saveWithURL")
     @Consumes(MediaType.APPLICATION_JSON)
     public String saveToFileWithURL(String pictureUrl) throws IOException {
-    System.out.println(pictureUrl);
+        System.out.println(pictureUrl);
         File targetFile = File.createTempFile("image", ".png");
         targetFile.delete();
 

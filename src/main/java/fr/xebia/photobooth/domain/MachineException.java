@@ -2,7 +2,7 @@ package fr.xebia.photobooth.domain;
 
 public class MachineException extends Exception {
 
-	public MachineException(String msg) {
-		super(msg);
+	public MachineException(String msg, Exception e) {
+		super(msg, e);
 	}
 }

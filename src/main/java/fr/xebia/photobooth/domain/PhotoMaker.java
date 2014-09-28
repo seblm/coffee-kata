@@ -1,42 +1,25 @@
 package fr.xebia.photobooth.domain;
 
+import fr.xebia.photobooth.external.pictureprocessor.PictureProcessor;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.File;
 
-import fr.xebia.photobooth.domain.Photo.PhotoType;
+public class PhotoMaker {
 
-import java.util.HashMap;
-import java.util.Map;
+    private final PictureProcessor pictureProcessor;
+    private final OrderToPictureProcessorProtocol orderToPictureProcessorProtocol;
 
-public enum PhotoMaker {
-	INSTANCE;
-	
-    static final Logger log = LoggerFactory.getLogger("PhotoMaker");
-
-    public String make(Command command) {
-        //TODO do something
-        log.info(command.photoType.toString());
-        
-        increaseNbPhotos(command);
-        
-        return "YOUR PHOTO IS READY";
+    public PhotoMaker(PictureProcessor pictureProcessor) {
+        this.pictureProcessor = pictureProcessor;
+        this.orderToPictureProcessorProtocol = new OrderToPictureProcessorProtocol();
     }
 
-    private void increaseNbPhotos(Command command){
-        PhotoType photoType = command.photoType;
-        Integer nb = soldPhotos.containsKey(photoType) ? soldPhotos.get(photoType) : 0;
-        soldPhotos.put(photoType, ++nb);        
-    }
-
-
-    public String printHowManyPhotosWhereSold() {
-        String msg="";
-        for(PhotoType photo: soldPhotos.keySet()){
-            msg +=photo + ":" + soldPhotos.get(photo) + ";";
+    public File make(Command command) throws MachineException {
+        try {
+            String pictureProcessorOrder = orderToPictureProcessorProtocol.convert(command.order);
+            return pictureProcessor.process(pictureProcessorOrder, command.picture);
+        } catch (Exception e) {
+            throw new MachineException("Unexpected error when processing picture", e);
         }
-        return msg;
-    }    
-    
-    private Map<PhotoType, Integer> soldPhotos = new HashMap<PhotoType, Integer>();
+    }
 }

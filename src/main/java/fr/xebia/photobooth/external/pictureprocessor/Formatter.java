@@ -1,10 +1,8 @@
-package fr.xebia.photobooth.pictureprocessor;
+package fr.xebia.photobooth.external.pictureprocessor;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import static fr.xebia.photobooth.pictureprocessor.Resizer.resize;
 
 public class Formatter {
 
@@ -16,7 +14,7 @@ public class Formatter {
         //creating a bufferd image array from image files
         BufferedImage[] buffImages = new BufferedImage[chunks];
         for (int i = 0; i < chunks; i++) {
-            buffImages[i] = resize(image, image.getWidth() / rows, image.getHeight() / cols);
+            buffImages[i] = Resizer.resize(image, image.getWidth() / rows, image.getHeight() / cols);
         }
 
         type = buffImages[0].getType();

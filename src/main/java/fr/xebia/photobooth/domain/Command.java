@@ -1,13 +1,13 @@
 package fr.xebia.photobooth.domain;
 
-import fr.xebia.photobooth.domain.Photo.PhotoType;
+import java.io.File;
 
 public class Command {
-    PhotoType photoType;
-    boolean color;
+    public final Order order;
+    public final File picture;
 
-    public Command(PhotoType photoType, boolean color) {
-        this.photoType = photoType;
-        this.color = color;
+    public Command(Order order, File picture) {
+        this.order = order;
+        this.picture = picture;
     }
 }
