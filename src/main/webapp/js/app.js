@@ -16,10 +16,6 @@ var cmdButtons = document.querySelectorAll(".btn-command");
     }, false);
 });
 
-
-//when user validate the command
-document.querySelector(".order-cmd").addEventListener('click', orderCmd, false);
-
 WebcamHandler.init();
 
 function takeAPicture(){
@@ -38,29 +34,8 @@ function savePicture () {
 function chooseCmd(cmd){
     command = cmd;
     document.querySelector(".order-cmd").classList.remove("hidden");
-    document.querySelector(".photobooth").classList.add("hidden");
+    document.querySelector(".photobooth").classList.remove("hidden");
 }
-
-function orderCmd(){
-    url = "/rest/photos/check";
-    data = {"colorimetry":"COLOR","format":"PORTRAIT", "money":0};
-
-
-    postData(url, data)
-    .done(function(result){
-        document.querySelector(".order-cmd").classList.add("hidden");
-        document.querySelector(".photobooth").classList.remove("hidden");
-    })
-    .fail(function(error){
-        console.log(error);
-        //TODO temp fix rest call
-        document.querySelector(".order-cmd").classList.add("hidden");
-        document.querySelector(".photobooth").classList.remove("hidden");
-
-     });
-
-}
-
 
 function postData(url, data){
 		return $.ajax({
@@ -68,7 +43,7 @@ function postData(url, data){
 			type: 'POST',
 			dataType: 'json',
 			contentType: "application/json; charset=utf-8",
-			data: data,
+			data: data
 		});
 }
 function getData(url){
