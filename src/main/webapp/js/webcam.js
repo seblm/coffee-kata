@@ -8,7 +8,7 @@ var WebcamLive = {
 		dataToSend : null,
 		
 		init : function(stream){
-			this.video.classList.classList.remove("hidden");
+			this.video.classList.remove("hidden");
 			this.stream = stream;
 		    if (window.URL) {
 		        this.video.src = window.URL.createObjectURL(stream);
