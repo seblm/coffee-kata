@@ -13,3 +13,5 @@ target/
 *.ear
 
 .DS_Store
+
+*.png
