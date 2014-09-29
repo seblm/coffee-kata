@@ -1,16 +1,17 @@
 package fr.xebia.photobooth.api;
 
+import fr.xebia.photobooth.domain.Order;
+import fr.xebia.tests.TomcatRule;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import fr.xebia.tests.TomcatRule;
-
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.http.ContentType.JSON;
-import static org.hamcrest.Matchers.startsWith;
 import static org.hamcrest.Matchers.endsWith;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.startsWith;
 
 public class PhotoResourceIT {	
 	@ClassRule
@@ -29,4 +30,19 @@ public class PhotoResourceIT {
 				log().all().
 				body(startsWith("image")).and().body(endsWith("png"));
 	}
+
+    @Test
+    public void should_return_true_if_valid_order() {
+        Order order = new Order("COLOR", "PORTRAIT", "0.0");
+
+        given().port(tomcatRule.port())
+               .body(order)
+               .contentType(JSON).log().all().
+        when().post("/rest/photos/check").
+        then()
+              .statusCode(200).log().all()
+
+              .body(equalTo("true"));
+    }
+
 }

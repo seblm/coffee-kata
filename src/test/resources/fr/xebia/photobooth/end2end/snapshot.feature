@@ -7,8 +7,7 @@ Feature: snapshot
     Then video url should be displayed
 
   Scenario: should takes a snapshot
-#    Given I go to homepage
-Given video url is displayed
+    Given video url is displayed
     Given I fill video url
     Given I click on start Video
     And video is displayed

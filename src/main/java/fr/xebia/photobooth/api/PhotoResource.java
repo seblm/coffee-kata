@@ -5,6 +5,7 @@ import fr.xebia.photobooth.domain.Validation;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
@@ -31,8 +32,8 @@ public class PhotoResource {
     @POST
     @Path("/check")
     @Consumes(MediaType.APPLICATION_JSON)
-    public boolean checkCommand(Order order) {
-        return Validation.INSTANCE.isValid(order);
+    public Response checkCommand(Order order) {
+        return Response.ok().entity(Validation.INSTANCE.isValid(order)).build();
     }
 
 

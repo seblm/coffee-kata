@@ -4,9 +4,13 @@ import java.math.BigDecimal;
 
 
 public class Order {
-    public final Format format;
-    public final Colorimetry colorimetry;
-    public final BigDecimal money;
+    public Format format;
+    public Colorimetry colorimetry;
+    public BigDecimal money;
+
+    public Order(){
+
+    }
 
     public Order(Colorimetry colorimetry, Format format, BigDecimal money) {
         this.colorimetry = colorimetry;
