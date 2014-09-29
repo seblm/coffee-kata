@@ -1,12 +1,5 @@
 package fr.xebia.photobooth.end2end;
 
-import java.io.IOException;
-import java.net.BindException;
-import java.net.ServerSocket;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -16,10 +9,14 @@ import cucumber.api.java.en.When;
 import fr.xebia.tests.PhantomJsTest;
 import fr.xebia.tests.TomcatRule;
 
+import java.io.IOException;
+import java.net.BindException;
+import java.net.ServerSocket;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+
 import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
-import org.fluentlenium.core.domain.FluentList;
-import org.fluentlenium.core.domain.FluentWebElement;
 
 public class MyStepdefs {
 
@@ -58,12 +55,37 @@ public class MyStepdefs {
         });
     }
 
+    /*******************************User choose a portrait color command*****************************************************/
     @Given("^I go to homepage$")
     public void I_go_to_homepage() {
         phantomJsTest.goTo("/");
         assertThat(phantomJsTest.title()).isEqualTo("XebiaMaton");
     }
-    
+    @Given("^I choose a portrait color command")
+    public void I_choose_a_portrait_color_command() {
+        phantomJsTest.click(".portrait-color");
+        phantomJsTest.await().atMost(5, TimeUnit.SECONDS).until(".order-cmd").isPresent();
+    }
+    @When("^I confirm my command and its price$")
+    public void I_confirm_my_command_and_its_price() throws Throwable {
+        I_click_on_button("btn-order-cmd");
+    }
+    @Then("^video url should be displayed$")
+    public void video_url_should_be_displayed() {
+        assertThat(phantomJsTest.findFirst("#urlVideo").isDisplayed());
+    }
+
+    @Given("^video url is displayed$")
+    public void video_url_is_displayed() throws Throwable {
+        I_go_to_homepage();
+        I_choose_a_portrait_color_command();
+        I_confirm_my_command_and_its_price();
+
+        video_url_should_be_displayed();
+    }
+
+    /*******************************User take a snapshot command*****************************************************/
+
     @Given("^I fill video url")
     public void I_fill_video_url() {
         phantomJsTest.await().atMost(5, TimeUnit.SECONDS).until("#urlVideo").areDisplayed();
@@ -92,6 +114,7 @@ public class MyStepdefs {
         assertThat(phantomJsTest.find(".snapshotResult").getAttribute("src")).isNotEmpty();
     }
 
+
     private Optional<TomcatRule> tomcatRuleOrEmptyIfAlreadyStarted() throws IOException {
         if (portIsNotBind(8080)) {
             return Optional.of(new TomcatRule());
@@ -107,6 +130,8 @@ public class MyStepdefs {
             return false;
         }
     }
+
+    /*******************************User confirm picture and get its command*****************************************************/
 
     @Given("^my picture is displayed$")
     public void my_picture_is_displayed() throws Throwable {
