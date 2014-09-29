@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.xebia.tests</groupId>
-    <artifactId>machines</artifactId>
+    <artifactId>xebiamaton</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -18,6 +18,7 @@
         <jersey.version>2.10</jersey.version>
         <cucumber.version>1.1.8</cucumber.version>
         <tomcat.version>8.0.11</tomcat.version>
+        <hamcrest.version>1.3</hamcrest.version>
     </properties>
 
     <dependencies>
@@ -29,7 +30,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>14.0</version>
+            <version>17.0</version>
         </dependency>
         <!-- jersey -->
         <dependency>
@@ -49,13 +50,6 @@
             <version>${jersey.version}</version>
         </dependency>
 
-
-        <!-- logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.7</version>
-        </dependency>
 
         <!-- tests -->
         <dependency>
@@ -89,8 +83,8 @@
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
-            <artifactId>cucumber-pro</artifactId>
-            <version>1.0.10</version>
+            <artifactId>cucumber-core</artifactId>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -106,15 +100,27 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-picocontainer</artifactId>
-            <version>1.1.8</version>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>2.41.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.jayway.restassured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>2.3.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>${hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -173,9 +179,6 @@
                     <includes>
                         <include>**/*IT.java</include>
                     </includes>
-                    <!-- <excludes>
-                        <exclude>**/CucumberRunner.java</exclude>
-                    </excludes> -->
                 </configuration>
                 <executions>
                     <execution>
@@ -192,8 +195,7 @@
                 <version>1.4.1</version>
                 <configuration>
                     <packages>
-                        <package>fr.xebia.photobooth.domain
-                        </package>
+                        <package>fr.xebia.photobooth.domain</package>
                     </packages>
                 </configuration>
             </plugin>
